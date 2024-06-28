@@ -1,0 +1,8 @@
+all:
+  hosts:
+    client1:
+      app_name: "Front-TestEnv"
+      resource_group: "Rawaa-sandbox"
+    # client2:
+    #   app_name: "BackOffice-TestEnv"
+    #   resource_group: "RG2"
