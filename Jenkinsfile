@@ -34,7 +34,7 @@ pipeline {
                // "ansible-playbook -i inventory AzureDeploy.yml -e 'azure_client_id=${params.azure_client_id}' -e 'azure_secret=${params.azure_secret}' -e 'azure_tenant=${params.azure_tenant}' -e 'resource_group=${params.resource_group}' -e 'app_name=${params.app_name}' -e 'jarfile_path=${params.NEXUS_ARTIFACT}'"               
                //  '''
                     sh """
-                    ansible-playbook -i inventory AzureDeploy.yml \\
+                    ansible-playbook -i Inventory.yml AzureDeploy.yml \\
                         -e 'azure_client_id=${params.AZURE_CLIENT_ID}' \\
                         -e 'azure_secret=${params.AZURE_SECRET}' \\
                         -e 'azure_tenant=${params.AZURE_TENANT}' \\
