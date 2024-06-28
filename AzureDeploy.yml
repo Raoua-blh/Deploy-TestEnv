@@ -5,10 +5,10 @@
     ansible_connection: local
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: Authenticate with Azure
-      shell: |
-        az login --service-principal -u {{ lookup('env', 'AZURE_CLIENT_ID') }} -p {{ lookup('env', 'AZURE_SECRET') }} --tenant {{ lookup('env', 'AZURE_TENANT') }}
-      register: azure_auth
+    # - name: Authenticate with Azure
+    #   shell: |
+    #     az login --service-principal -u {{ lookup('env', 'AZURE_CLIENT_ID') }} -p {{ lookup('env', 'AZURE_SECRET') }} --tenant {{ lookup('env', 'AZURE_TENANT') }}
+    #   register: azure_auth
 
     - name: Deploy artifact to web app
       shell: |
