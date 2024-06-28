@@ -17,7 +17,7 @@ pipeline {
                     withCredentials([usernameColonPassword(credentialsId: 'Nexus', variable: 'nexus')]) {
                         sh """
                         mkdir -p downloaded-artifacts
-                        curl -u ${nexus} ${nexusUrl} -o downloaded-artifacts
+                        curl -u ${nexus} ${nexusUrl} -o downloaded-artifacts/${params.NEXUS_ARTIFACT}
                         """
                     }
                 }
