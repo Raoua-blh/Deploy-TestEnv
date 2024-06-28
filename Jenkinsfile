@@ -27,9 +27,22 @@ pipeline {
 
         stage('Run Ansible Playbook') {
             steps {
-                sh '''
-               "ansible-playbook -i inventory AzureDeploy.yml -e 'azure_client_id=${params.azure_client_id}' -e 'azure_secret=${params.azure_secret}' -e 'azure_tenant=${params.azure_tenant}' -e 'resource_group=${params.resource_group}' -e 'app_name=${params.app_name}' -e 'jarfile_path=${params.NEXUS_ARTIFACT}'"               
-                '''
+                script{
+                def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT.split('/').last()}"
+
+               //  sh '''
+               // "ansible-playbook -i inventory AzureDeploy.yml -e 'azure_client_id=${params.azure_client_id}' -e 'azure_secret=${params.azure_secret}' -e 'azure_tenant=${params.azure_tenant}' -e 'resource_group=${params.resource_group}' -e 'app_name=${params.app_name}' -e 'jarfile_path=${params.NEXUS_ARTIFACT}'"               
+               //  '''
+                    sh """
+                    ansible-playbook -i inventory AzureDeploy.yml \\
+                        -e 'azure_client_id=${params.AZURE_CLIENT_ID}' \\
+                        -e 'azure_secret=${params.AZURE_SECRET}' \\
+                        -e 'azure_tenant=${params.AZURE_TENANT}' \\
+                        -e 'resource_group=${params.RESOURCE_GROUP}' \\
+                        -e 'app_name=${params.APP_NAME}' \\
+                        -e 'jarfile_path=${jarfilePath}'
+                    """
+                }
             }
         }
     }
