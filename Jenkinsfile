@@ -34,7 +34,7 @@ pipeline {
                         principalCredentialId: 'Jenkins-'
                     )
                
-                def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT.split('/').last()}"
+                def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT}"
                     sh """
                     ansible-playbook -i Inventory.yml AzureDeploy.yml  -e 'jarfile_path=${jarfilePath}'
                     """
