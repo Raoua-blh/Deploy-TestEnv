@@ -14,11 +14,10 @@ pipeline {
             steps {
                 script {
                     def nexusUrl = "${params.NEXUS_URL}/${params.NEXUS_ARTIFACT}"          
-                    def downloadDir = "${env.WORKSPACE}/downloaded-artifacts"
                     withCredentials([usernameColonPassword(credentialsId: 'Nexus', variable: 'nexus')]) {
                         sh """
-                        sh "mkdir -p ${downloadDir}"
-                        curl -u ${nexus} ${nexusUrl} -o ${downloadDir}
+                        mkdir -p downloaded-artifacts
+                        curl -u ${nexus} ${nexusUrl} -o downloaded-artifacts
                         """
                     }
                 }
