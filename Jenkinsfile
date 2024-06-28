@@ -16,7 +16,7 @@ pipeline {
                     def nexusUrl = "${params.NEXUS_URL}/${params.NEXUS_ARTIFACT}"          
                     withCredentials([usernameColonPassword(credentialsId: 'Nexus', variable: 'nexus')]) {
                         sh """
-                        rm -rf 
+                        mkdir -p downloaded-artifacts
                         cd downloaded-artifacts
                         curl -u ${nexus} ${nexusUrl} 
                         """
