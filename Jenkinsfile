@@ -25,8 +25,11 @@ pipeline {
         stage('Run Ansible Playbook') {
             steps {
                 script{
+                    
+                    echo "Workspace: ${env.WORKSPACE}"
+                    echo "Nexus Artifact: ${params.NEXUS_ARTIFACT}"
                     def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT}"
-
+                    echo "Jarfile Path: ${jarfilePath}
                     // Authenticate with Azure CLI using service principal credentials
                     azureCLI(
                         principalCredentialId: 'Jenkins-'
