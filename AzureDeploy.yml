@@ -7,5 +7,4 @@
   tasks:
     - name: Deploy artifact to web app
       shell: az webapp deployment source config-zip --resource-group "{{ resource_group }}" --name "{{ app_name }}" --src "{{ jarfile_path }}"
-      args:
-        warn: false
+
