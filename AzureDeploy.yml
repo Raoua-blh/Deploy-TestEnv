@@ -8,4 +8,3 @@
     - name: Deploy artifact to web app
       shell: |
       az webapp deploy --resource-group {{ resource_group }} --name {{ app_name }} --src {{ jarfile_path }} --type jar
-      ignore_errors: yes
