@@ -6,5 +6,4 @@
     ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Deploy artifact to web app
-      shell: |
-      az webapp deploy --resource-group {{ resource_group }} --name {{ app_name }} --src {{ jarfile_path }} --type jar
+      shell: az webapp deploy --resource-group "{{ resource_group }}" --name "{{ app_name }}" --src "{{ jarfile_path }}" --type jar
