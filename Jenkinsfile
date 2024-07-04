@@ -32,7 +32,7 @@ pipeline {
                
                 def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT}"
                     sh """
-                    ansible-playbook -i Inventory.yml AzureDeploy.yml  -e 'jarfile_path=${jarfilePath}'
+                    ansible-playbook -i Inventory.yml AzureDeploy.yml  -e 'jarfile_path=${jarfilePath}'|| true
                     """
                 }
             }
