@@ -29,7 +29,7 @@ pipeline {
                 script{
                     def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT}"
                     azureCLI(
-                        principalCredentialId: 'Jenkins-Azure-Credentials',
+                        principalCredentialId: 'Jenkins-',
                         scriptType: 'ps',
                         script: """
                             Write-Output "hello azure"
