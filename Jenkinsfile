@@ -30,9 +30,8 @@ pipeline {
                     def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT}"
                     azureCLI(
                         principalCredentialId: 'Jenkins-',
-                        scriptType: 'ps',
                         script: """
-                            Write-Output "hello azure"
+                            echo "Logged into Azure CLI"
                         """
                     )
                     sh """
