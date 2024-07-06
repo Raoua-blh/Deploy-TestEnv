@@ -28,14 +28,11 @@ pipeline {
             steps {
                 script{
                     def jarfilePath = "${env.WORKSPACE}/downloaded-artifacts/${params.NEXUS_ARTIFACT}"
-                            azureCLI(
-                                principalCredentialId: 'Jenkins-',
-                                commands: [
-                                    script: """
-                                         echo "Logged into Azure CLI"
-
-                                            """
-                                ]]
+                    azureCLI(
+                        principalCredentialId: 'Jenkins-', // Ensure this ID is correct
+                        commands: [
+                                'echo "Logged into Azure CLI"'
+                                ]
                             )
                     sh """
                     ansible-playbook -i Inventory.yml AzureDeploy.yml  -e 'jarfile_path=${jarfilePath}'
