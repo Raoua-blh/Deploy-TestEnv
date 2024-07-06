@@ -3,6 +3,9 @@ all:
     client1:
       app_name: "OzoneTestEnv"
       resource_group: "OzoneTestEnv-frontOffice-Dev-WEU"
+    client2:
+      app_name: "Rawaa-test123"
+      resource_group: "OzoneTestEnv-frontOffice-Dev-WEU"
     # client2:
     #   app_name: "BackOffice-TestEnv"
     #   resource_group: "RG2"
